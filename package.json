@@ -1,0 +1,13 @@
+{
+  "name": "wns-broadcast",
+  "version": "1.0.0",
+  "private": true,
+  "description": "WNS 财经台晨间播报排版台：主播模板 + 文字区自动排版 + 高清 PNG 导出",
+  "scripts": {
+    "dev": "node scripts/dev-server.mjs --port ${PORT:-7200}",
+    "test": "node tests/e2e.mjs"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^25.19.0"
+  }
+}

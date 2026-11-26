@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WNS 财经台 · 晨间播报排版台</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="dot"></span> WNS 财经台 · 晨间播报排版台
+  </div>
+  <div class="hint">把文字粘贴到左侧，右侧即时出图 · 也可直接把文字发给 Kimi，帮你排好</div>
+</header>
+
+<main class="layout">
+  <aside class="panel">
+    <section class="group">
+      <label class="label">主播模板</label>
+      <div class="seg" id="tplSeg">
+        <button class="seg-btn active" data-tpl="male">男主播</button>
+        <button class="seg-btn" data-tpl="female">女主播</button>
+      </div>
+      <label class="sync-row">
+        <input type="checkbox" id="syncChk">
+        <span>同步两版文字 <em>开启后，编辑同时作用于男女主播</em></span>
+      </label>
+    </section>
+
+    <section class="group">
+      <label class="label">排版</label>
+      <div class="ctl-row">
+        <label class="chk"><input type="checkbox" id="sizeAuto" checked> 自动字号</label>
+        <input type="range" id="sizeRange" min="22" max="72" value="44" disabled>
+        <span class="val" id="sizeVal">44px</span>
+      </div>
+      <div class="ctl-row">
+        <span class="ctl-name">行距</span>
+        <input type="range" id="lineRange" min="1.3" max="2" step="0.05" value="1.62">
+        <span class="val" id="lineVal">1.62</span>
+      </div>
+      <div class="ctl-row">
+        <span class="ctl-name">标题</span>
+        <input type="range" id="titleRange" min="1" max="2" step="0.05" value="1.55">
+        <span class="val" id="titleVal">1.55×</span>
+      </div>
+      <div class="ctl-row">
+        <span class="ctl-name">段距</span>
+        <input type="range" id="gapRange" min="0.2" max="1.5" step="0.05" value="0.55">
+        <span class="val" id="gapVal">0.55</span>
+      </div>
+      <div class="seg" id="alignSeg">
+        <button class="seg-btn active" data-align="left">左对齐</button>
+        <button class="seg-btn" data-align="center">居中</button>
+      </div>
+    </section>
+
+    <section class="group">
+      <label class="label">新闻大标题</label>
+      <input type="text" id="titleInput" placeholder="留空则不显示标题，正文从顶部开始">
+    </section>
+
+    <section class="group grow">
+      <label class="label">播报正文 <span class="tip">空行分段；**文字** 加粗强调</span></label>
+      <textarea id="textInput" spellcheck="false"></textarea>
+    </section>
+
+    <section class="group">
+      <div class="btn-row">
+        <button class="btn ghost" id="sampleBtn">载入示例</button>
+        <button class="btn ghost" id="clearBtn">清空</button>
+        <button class="btn primary" id="exportBtn">导出 PNG（2848×1600）</button>
+      </div>
+      <div class="status" id="status"></div>
+    </section>
+  </aside>
+
+  <section class="preview">
+    <canvas id="board" width="2848" height="1600"></canvas>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

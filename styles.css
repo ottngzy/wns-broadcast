@@ -1,0 +1,148 @@
+:root {
+  --bg: #0d1512;
+  --panel: #14201b;
+  --line: #24463a;
+  --txt: #d8e6df;
+  --dim: #7fa294;
+  --accent: #27c48d;
+  --accent-dark: #0b6e54;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--txt);
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--line);
+  flex: 0 0 auto;
+}
+
+.brand { font-weight: 700; letter-spacing: 1px; font-size: 15px; }
+.dot {
+  display: inline-block; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--accent); margin-right: 8px;
+  box-shadow: 0 0 8px var(--accent);
+}
+.hint { font-size: 12px; color: var(--dim); }
+
+.layout {
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 0;
+}
+
+.panel {
+  width: 340px;
+  flex: 0 0 auto;
+  background: var(--panel);
+  border-right: 1px solid var(--line);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.group { display: flex; flex-direction: column; gap: 8px; }
+.group.grow { flex: 1 1 auto; min-height: 0; overflow: hidden; }
+
+.label { font-size: 13px; color: var(--dim); }
+.tip { font-size: 11px; opacity: .75; }
+
+.seg { display: flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.seg-btn {
+  flex: 1; padding: 8px 0; background: transparent; color: var(--dim);
+  border: none; cursor: pointer; font-size: 13px;
+}
+.seg-btn.active { background: var(--accent-dark); color: #fff; }
+
+textarea {
+  flex: 1 1 auto;
+  min-height: 0;
+  resize: none;
+  background: #0f1a15;
+  color: var(--txt);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 1.7;
+  font-family: inherit;
+  outline: none;
+}
+textarea:focus { border-color: var(--accent-dark); }
+
+#titleInput {
+  width: 100%;
+  background: #0f1a15;
+  color: var(--txt);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  outline: none;
+}
+#titleInput:focus { border-color: var(--accent-dark); }
+#titleInput::placeholder { color: #4a635a; font-weight: 400; }
+
+.btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn {
+  padding: 9px 14px; border-radius: 8px; border: 1px solid var(--line);
+  background: transparent; color: var(--txt); cursor: pointer; font-size: 13px;
+}
+.btn.primary { background: var(--accent-dark); border-color: var(--accent-dark); color: #fff; flex: 1; }
+.btn.ghost:hover, .btn.primary:hover { filter: brightness(1.15); }
+
+.status { font-size: 12px; color: var(--dim); min-height: 16px; }
+
+.sync-row {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 13px; color: var(--txt); cursor: pointer; user-select: none;
+  padding: 4px 2px;
+}
+.sync-row input { margin-top: 3px; accent-color: var(--accent-dark); }
+.sync-row em { font-style: normal; font-size: 11px; color: var(--dim); display: block; }
+
+.ctl-row { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.ctl-row input[type="range"] { flex: 1; accent-color: var(--accent-dark); min-width: 0; }
+.ctl-name { font-size: 12px; color: var(--dim); min-width: 30px; }
+.val { min-width: 38px; text-align: right; font-size: 12px; color: var(--dim); }
+.chk { display: flex; align-items: center; gap: 6px; white-space: nowrap; cursor: pointer; }
+.chk input { accent-color: var(--accent-dark); }
+
+.preview {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  min-width: 0;
+}
+#board {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto; height: auto;
+  border-radius: 6px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.5);
+}
+
+@media (max-width: 860px) {
+  body { overflow: auto; }
+  .layout { flex-direction: column; flex: 0 0 auto; min-height: 0; }
+  .panel { width: 100%; flex: 0 0 auto; border-right: none; border-bottom: 1px solid var(--line); }
+  textarea { min-height: 140px; }
+}
