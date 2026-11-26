@@ -43,14 +43,14 @@ try {
   // 画布采样：文字区非白像素 / 全图非白像素
   const textPixels = () => page.evaluate(() => {
     const ctx = document.getElementById("board").getContext("2d");
-    const d = ctx.getImageData(1150, 320, 1450, 1040).data;
+    const d = ctx.getImageData(804, 230, 1060, 752).data;
     let n = 0;
     for (let i = 0; i < d.length; i += 4) if (d[i] < 200 || d[i+1] < 200 || d[i+2] < 200) n++;
     return n;
   });
   const canvasPixels = () => page.evaluate(() => {
     const ctx = document.getElementById("board").getContext("2d");
-    const d = ctx.getImageData(0, 0, 2848, 1600).data;
+    const d = ctx.getImageData(0, 0, 2048, 1152).data;
     let n = 0;
     for (let i = 0; i < d.length; i += 400) if (d[i] < 240 || d[i+1] < 240 || d[i+2] < 240) n++;
     return n;
@@ -91,7 +91,7 @@ try {
   const clearedText = await page.$eval("#textInput", el => el.value);
   const clearedTitle = await page.$eval("#titleInput", el => el.value);
   check("清空输入框", clearedText === "" && clearedTitle === "");
-  check("清空后画布仍显示模板背景", (await canvasPixels()) > 5000);
+  check("清空后画布仍显示模板背景", (await canvasPixels()) > 2500);
   await page.click("#sampleBtn"); await wait(400);
 
   /* 4b. 标题独立渲染 */
@@ -130,7 +130,7 @@ try {
   /* 7b. 全角星号加粗兼容 */
   const greenPixels = () => page.evaluate(() => {
     const ctx = document.getElementById("board").getContext("2d");
-    const d = ctx.getImageData(1150, 320, 1450, 1040).data;
+    const d = ctx.getImageData(804, 230, 1060, 752).data;
     let n = 0;
     for (let i = 0; i < d.length; i += 4) if (d[i] < 60 && d[i+1] > 70 && d[i+1] < 170 && d[i+2] < 140) n++;
     return n;
